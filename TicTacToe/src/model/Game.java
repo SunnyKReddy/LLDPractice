@@ -25,5 +25,15 @@ public class Game {
         for(Player player: players){
             System.out.println("+++===>> '" + player.getPlayerName() + "' -> "  + player.getPlayerPiece().getPieceType());
         }
+        startGame(players, board);
+    }
+
+    public void startGame(Deque<Player> players, Board board){
+        boolean winner = false;
+        while(!winner){
+            if(board.rowColumnDiagonalMatch()){
+
+            }
+        }
     }
 }
