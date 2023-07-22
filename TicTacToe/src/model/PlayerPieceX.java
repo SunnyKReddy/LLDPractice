@@ -2,8 +2,8 @@ package model;
 
 public class PlayerPieceX extends PlayerPiece{
     //public PieceType pieceType;
-    public PlayerPieceX(PieceType pieceType) {
-        super(pieceType);
+    public PlayerPieceX() {
+        super(PieceType.X);
         //setPieceType(pieceType);
     }
 

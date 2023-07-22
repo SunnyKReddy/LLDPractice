@@ -11,6 +11,7 @@ public class Board {
     }
 
     private void initializeBoard(int boardSize) {
+        System.out.println("Initializing Board of size: " + boardSize + " * " + boardSize);
         board = new PlayerPiece[boardSize][boardSize];
     }
 

@@ -11,8 +11,8 @@ public class PlayerPieceO extends PlayerPiece{
 //        this.pieceType = pieceType;
 //    }
 
-    public PlayerPieceO(PieceType pieceType) {
-        super(pieceType);
+    public PlayerPieceO() {
+        super(PieceType.O);
         //this.pieceType = pieceType;
     }
 
