@@ -29,6 +29,8 @@ public class Client {
         }
 
 
+        b.board[3][2] = playerPieceX;
+
         b.printBoardStatus();
         System.out.println(b.rowColumnDiagonalMatch());
     }
