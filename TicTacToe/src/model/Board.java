@@ -49,7 +49,7 @@ public class Board {
                 break;
             }
         }
-        if (mainDiagonalEqual) {
+        if (mainDiagonalEqual && mainDiagonalFirst != null) {
             return true;
         }
 
@@ -62,7 +62,7 @@ public class Board {
                 break;
             }
         }
-        if (antiDiagonalEqual) {
+        if (antiDiagonalEqual && antiDiagonalFirst != null) {
             return true;
         }
 
@@ -76,7 +76,7 @@ public class Board {
                     break;
                 }
             }
-            if (rowEqual) {
+            if (rowEqual && rowFirst != null) {
                 return true;
             }
         }
@@ -91,10 +91,29 @@ public class Board {
                     break;
                 }
             }
-            if (colEqual) {
+            if (colEqual && colFirst != null) {
                 return true;
             }
         }
         return false;
+    }
+
+    public boolean checkNotNullElementsOnBoard() {
+        if (board == null || board.length == 0 || board[0].length == 0) {
+            return false;
+        }
+
+        int rows = board.length;
+        int cols = board[0].length;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (board[i][j] == null) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
