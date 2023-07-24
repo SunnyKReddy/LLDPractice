@@ -28,25 +28,43 @@ class TwoDArrayAnalyzer {
 
         // Update row hashmap
         rows[row].put(element, rows[row].getOrDefault(element, 0) + 1);
+        System.out.println("HashMap of a Row: " + row);
+        TwoDArrayAnalyzer.printHashMaps(rows[row]);
         if (element != 0 && rows[row].get(element) == N) return true;
 
         // Update column hashmap
         cols[col].put(element, cols[col].getOrDefault(element, 0) + 1);
+        System.out.println("HashMap of a Column: " + col);
+        TwoDArrayAnalyzer.printHashMaps(cols[col]);
         if (element != 0 && cols[col].get(element) == N) return true;
 
         // Update diagonal hashmap if the element is on the diagonal
         if (row == col) {
             diagonals.put(element, diagonals.getOrDefault(element, 0) + 1);
+            System.out.println("HashMap of a Diagonal: ");
+            TwoDArrayAnalyzer.printHashMaps(diagonals);
             if (element != 0 && diagonals.get(element) == N) return true;
         }
 
         // Update anti-diagonal hashmap if the element is on the anti-diagonal
         if (row + col == N - 1) {
             antiDiagonals.put(element, antiDiagonals.getOrDefault(element, 0) + 1);
+            System.out.println("HashMap of Anti Diagonal : ");
+            TwoDArrayAnalyzer.printHashMaps(antiDiagonals);
             if (element != 0 && antiDiagonals.get(element) == N) return true;
         }
 
         return false;
+    }
+
+    public static void printHashMaps(Map<Integer, Integer> map){
+        // Print all keys and their corresponding values
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.print(map + " -> ");
+            System.out.println("Key: " + key + ", Value: " + value);
+        }
     }
 
     public void displayArray() {
@@ -78,10 +96,14 @@ class TwoDArrayAnalyzer {
             System.out.print("Enter the value for the 2D array: ");
             int value = scanner.nextInt();
 
-            analyzer.matrix[row][col] = value;
+            //analyzer.matrix[row][col] = value;
+            if(analyzer.matrix[row][col] == 0) analyzer.matrix[row][col] = value;
+            else System.out.println("You can't updated non empty cell, try at another position");
+
             analyzer.displayArray();
 
             boolean result = analyzer.checkConditions(row, col);
+            System.out.println("<<<<<<<---------------->>>>>>>");
             if (result) {
                 analyzer.displayArray();
                 System.out.println("Conditions met for the 2D array!");
