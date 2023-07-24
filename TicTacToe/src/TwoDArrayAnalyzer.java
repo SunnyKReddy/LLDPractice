@@ -9,6 +9,7 @@ class TwoDArrayAnalyzer {
     private Map<Integer, Integer>[] cols;
     private Map<Integer, Integer> diagonals;
     private Map<Integer, Integer> antiDiagonals;
+    public Map<Integer, Integer> arrayMap2d;
 
     public TwoDArrayAnalyzer(int N) {
         this.N = N;
@@ -17,6 +18,7 @@ class TwoDArrayAnalyzer {
         cols = new HashMap[N];
         diagonals = new HashMap<>();
         antiDiagonals = new HashMap<>();
+        arrayMap2d = new HashMap<>();
         for (int i = 0; i < N; i++) {
             rows[i] = new HashMap<>();
             cols[i] = new HashMap<>();
@@ -62,7 +64,7 @@ class TwoDArrayAnalyzer {
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             Integer key = entry.getKey();
             Integer value = entry.getValue();
-            System.out.print(map + " -> ");
+            System.out.print(" -> ");
             System.out.println("Key: " + key + ", Value: " + value);
         }
     }
@@ -97,7 +99,12 @@ class TwoDArrayAnalyzer {
             int value = scanner.nextInt();
 
             //analyzer.matrix[row][col] = value;
-            if(analyzer.matrix[row][col] == 0) analyzer.matrix[row][col] = value;
+            if(analyzer.matrix[row][col] == 0) {
+                analyzer.matrix[row][col] = value;
+                analyzer.arrayMap2d.put(value, analyzer.arrayMap2d.getOrDefault(value, 0) + 1);
+                System.out.println("Array elements of 2D ArrayMap are: ");
+                TwoDArrayAnalyzer.printHashMaps(analyzer.arrayMap2d);
+            }
             else System.out.println("You can't updated non empty cell, try at another position");
 
             analyzer.displayArray();
